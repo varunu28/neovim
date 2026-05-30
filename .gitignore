@@ -1,0 +1,12 @@
+# Ignore lazy.nvim state files or packer compiled files
+/lazy-lock.json
+/plugin/packer_compiled.lua
+
+# Ignore swap, backup, and undo files if you store them locally
+*.swp
+*.swo
+.netrwhist
+undo/
+
+# Ignore local system-specific overrides
+.nvim.local.lua

@@ -32,6 +32,22 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "autocmds"
 
+-- Create an autocmd group for diagnostic hovers
+local diagnostic_hover_grp = vim.api.nvim_create_augroup("DiagnosticHover", { clear = true })
+
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  group = diagnostic_hover_grp,
+  callback = function()
+    vim.diagnostic.open_float(nil, {
+      scope = "cursor", -- "cursor" is usually preferred over "buffer" for automated hovers
+      focusable = false,
+      close_events = { "CursorMoved", "CursorMovedI", "BufLeave" },
+    })
+  end,
+})
+
+vim.opt.updatetime = 500 -- time in milliseconds
+
 vim.schedule(function()
   require "mappings"
 end)

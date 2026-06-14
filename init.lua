@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   end,
 })
 
+-- Tab configs
+vim.opt.tabstop = 4 
+
 vim.opt.updatetime = 500 -- time in milliseconds
 
 vim.schedule(function()
